@@ -3,23 +3,39 @@ package com.example;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import javafx.scene.input.DataFormat;
 
 public class App {
     private static final String PASSWORD = "";
     private static final String USERNAME = "gitpod";
     private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
-
+    private Date data = new Date();
+    private Calendar data2 = Calendar.getInstance();
+    private Locale brasil = new Locale("pt","BR");
+    
     public static void main(String[] args) {
         new App();
         System.out.println("TESTE TADEU");
+
+        
+
     }
 
     public App(){
+        
         try(var conn = getConnection()){
-            carregarDriverJDBC();
+            DateFormat dataFormatada = DateFormat.getDateInstance(DateFormat.DATE_FIELD,brasil);
+
+            System.out.println("Data2:" +  dataFormatada.format(this.data.getTime()));
+            /*carregarDriverJDBC();
             listarEstados(conn);
             localizarEstado(conn, "PR");
-            listarDadosTabela(conn, "produto");
+            listarDadosTabela(conn, "produto");*/
         } catch (SQLException e) {
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }        
@@ -82,6 +98,7 @@ public class App {
             System.out.println();
         } catch (SQLException e) {
             System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
+
         }
     }
 
