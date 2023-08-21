@@ -3,7 +3,7 @@ package com.example.manual;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
     
     //private Integer id ;    
     private LocalDate dtCadastro ;
@@ -12,7 +12,8 @@ public class Cliente {
     private Double vlLimiteCredito;
 
     public Cliente(String cpf,String nome)
-    {
+    {       
+        
         this.nome = nome;
         this.cpf = cpf;
         this.dtCadastro = LocalDate.now();
@@ -54,7 +55,6 @@ public class Cliente {
             Integer soma            = 0;
             Integer digitoVerific01     = null;
             Integer digitoVerific01part = null;
-
             Integer numPos          = null;            
             Integer tamanho         = this.cpf.length() - 2;
 
@@ -83,10 +83,12 @@ public class Cliente {
            digitoVerific01part = Integer.parseInt(this.cpf.substring(9,10));
            System.out.println(Objects.equals(digitoVerific01,digitoVerific01part));
            return   Objects.equals(digitoVerific01,digitoVerific01part);
-           //return false;
+           //return false;           
+    }
+    public int compareTo(Cliente cliente)
+    {
+        return this.getNome().compareTo(cliente.getNome()) ;
 
-
-           
     }
 
 }
