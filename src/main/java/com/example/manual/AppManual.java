@@ -53,5 +53,8 @@ public class AppManual {
         System.out.println("1- Incluir Cliente");
         System.out.println("2- Listar Clientes");
         System.out.println("3- Excluir Clientes");
+        System.out.println("4- Transferir Lista para Banco de Dados");
+        System.out.println("5- Lista Completa de Clientes no Banco de Dados");
+        
     }
 }
