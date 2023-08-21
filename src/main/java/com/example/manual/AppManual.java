@@ -1,5 +1,6 @@
 package com.example.manual;
 
+import java.sql.Connection;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,6 +9,14 @@ public class AppManual {
         Integer iOpcao = 0;
         boolean parar = false;
         PersistCliente clientes = new PersistCliente();
+        try{
+            Connection conexao = Conexao.conectar();
+        }catch(RuntimeException e){
+            System.out.println(e.getMessage());
+            return;
+            
+        }
+        
         Scanner entrada = new Scanner(System.in);
         
         while(!parar){      
@@ -55,6 +64,6 @@ public class AppManual {
         System.out.println("3- Excluir Clientes");
         System.out.println("4- Transferir Lista para Banco de Dados");
         System.out.println("5- Lista Completa de Clientes no Banco de Dados");
-        
+
     }
 }

@@ -52,7 +52,7 @@ ALTER SEQUENCE cidade_id_seq RESTART WITH 5564;
 CREATE UNIQUE INDEX ix_cidade ON cidade (nome, estado_id);
 
 create table cliente (
-    id serial primary key not null,
+    
     nome varchar(75) not null,
     cpf varchar(11) not null,
     cidade_id int not null,
