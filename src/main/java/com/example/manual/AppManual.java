@@ -18,7 +18,7 @@ public class AppManual {
         }
         
         Scanner entrada = new Scanner(System.in);
-        
+        String cpfCliente = "";
         while(!parar){      
             imprimirMenu();      
             iOpcao = entrada.nextInt();
@@ -26,7 +26,7 @@ public class AppManual {
                 case 1:
                     entrada.nextLine();
                     System.out.println("Digite o CPF do CLIENTE");
-                    String cpfCliente = entrada.nextLine();
+                    cpfCliente = entrada.nextLine();
                     System.out.println("Digite o Nome do CLIENTE");
                     String nomeCliente = entrada.nextLine();
                     Cliente cliente = new Cliente(cpfCliente,nomeCliente);
@@ -40,7 +40,17 @@ public class AppManual {
                     break;
                 case 2:
                     clientes.imprimeListaClientes();
-                    break;    
+                    break;  
+                case 3:
+                    entrada.nextLine();                    
+                    System.out.println("Digite o CPF do CLIENTE A SER EXCLUIDO");
+                     cpfCliente = entrada.nextLine();
+                    if(clientes.excluirClientePorCpf(cpfCliente)){
+                        System.out.println("Cliente Excluido Com Sucesso");
+                    } else{
+                        System.out.println("Cliente Não Encontrado para Exclusão");
+                    }    
+                    break;
                 default:
                       System.out.println("Opção Invalida. Digite um número de 1 a 3");
                     break;

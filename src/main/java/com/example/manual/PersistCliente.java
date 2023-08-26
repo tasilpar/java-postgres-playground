@@ -28,13 +28,21 @@ public class PersistCliente {
     public void incluirCliente(Cliente cliente) throws Exception  {
 
         boolean cpfValidado = false;
-        cpfValidado = cliente.validarCPF();
+        //cpfValidado = cliente.validarCPF();
+        cpfValidado = true;
         if(cpfValidado){
             this.clientes.add(cliente)  ;
         }else{
             throw new Exception ("Cliente com CPF:" + cliente.getCpf() + " Inválido");
         }        
     }
+    public boolean excluirClientePorCpf(String cpf){
+
+        //Iterator<Cliente> iCliente = this.clientes.iterator();
+        return this.clientes.removeIf(cliente -> cliente.getCpf().equalsIgnoreCase(cpf));       
+
+    }
+
     
 
 
